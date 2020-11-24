@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+      integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+      crossorigin="anonymous"
+    />
+    <title>Graduate website</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <nav class="main-nav">
+        <img src="logo.png" alt="" class="logo" />
+        <ul class="nav-menu">
+          <li class="nav-menu-item">
+            <a href="index.html"> <i class="fas fa-home"></i> Home</a>
+          </li>
+          <li class="nav-menu-item">
+            <a href="#"><i class="fas fa-user"></i> About Us</a>
+          </li>
+          <li class="nav-menu-item">
+            <a href="members.html"><i class="fas fa-address-book"></i> Members</a>
+          </li>
+          <li class="nav-menu-item"><a href="Donate.html">Donate</a></li>
+        </ul>
+
+        <ul class="nav-menu">
+          <li class="nav-menu-item"><a href="#">Register</a></li>
+          <li class="nav-menu-item"><a href="#">Sign In</a></li>
+        </ul>
+      </nav>
+
+      <!-- <section class="header-centered">
+     <h1 >Provide your details below</h1>
+    </section> -->
+      <section class="complete-form">
+        <!-- <h1 class="brand">Simple complete the form below.</h1> -->
+        <div class="organisation-infor">
+          <h3>Graduate Assistance</h3>
+          <ul class="contact-details">
+            <li>131 Something Street</li>
+            <li>(456) 4555-333</li>
+            <li>Solen production company</li>
+          </ul>
+          
+        </div>
+        <div class="register-form">
+          <h3>Register to join</h3>
+          <form  method="POST" id="student-infor">
+            <p>
+              <label>Name</label>
+              <input type="text" placeholder="Name" required  name="name"/>
+            </p>
+            <p>
+              <label>Surname</label>
+              <input type="text" placeholder="Surname" required name="surname" />
+            </p>
+            <p>
+              <label>ID No</label>
+              <input type="text" placeholder="Id No" required  name="idnumber"/>
+            </p>
+            <p>
+              <label>Email</label>
+              <input type="text" placeholder="Email"  required name="email"/>
+            </p>
+            <p class="full">
+              <label>Message</label>
+              <textarea name="message" rows="5" required placeholder="Start typing..."> </textarea>
+            </p>
+            <p class="full">
+              <button type="submit" id="save-data" class="btn">Submit</button>
+            </p>
+            <p class="full" style="text-align: center;">
+              <span class="message">Loading...</span>
+            </p>
+
+          </form>
+
+        </div>
+
+      </section>
+    </div>
+  </body>
+</html>
+<script src="assets/jquery-3.5.1.min.js"></script>
+<script>
+
+$('#student-infor').submit(function(e){
+    e.preventDefault();
+
+    $.ajax({
+          type: "POST",
+          url: "scripts/Register.php",
+          data:$('#student-infor').serialize(),
+          beforeSend: function(msg){
+
+              $('.message').css('display','block')
+              $('.message').html('Saving information')
+          },
+          success: function(msg){
+            ///alert(msg)
+            // $('.message').css('display','block')
+            $('.message').html('Thank you, Data successfully saved')
+
+          }
+    });
+
+})
+
+
+</script>
